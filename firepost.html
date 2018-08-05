@@ -17,18 +17,29 @@
     function callSubmit(){
       var value = document.getElementById("typeText").value;
       alert(" CLICK ON SUBMIT BUTTON:: "+value);
-      
+      dbRef.ref('my-number').set(value);
     }
   </script>
 
 <script >
-  function buttonClick(){
-    alert("zala re...")
+  function onButtonClick(){
+    alert("light is on")
+    dbRef.ref('light/led').set("on");
+
+  }
+
+  function offButtonClick(){
+    alert("light is off")
+    dbRef.ref('light/led').set("off");
+
   }
 </script>
 
 <br>
-<button onclick="buttonClick()" >CLICK HERE....</button>
+<button onclick="onButtonClick()" >Turn On</button>
+<br>
+<button onclick="offButtonClick()" >Turn Off</button>
+
 <h1 > <br><br> </h1>
 
 
@@ -48,7 +59,7 @@
 //var dbRef = firebase.database().ref().child('my-number');
 //dbRef.on('value', snap => lat.innerText = snap.val());
 var dbRef = firebase.database();
-dbRef.ref('my-number').set("1215");
+
 </script>
 
 </body>
