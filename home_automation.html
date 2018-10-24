@@ -1,0 +1,74 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta  charset="utf-8">
+	<title>my control panel</title>
+</head>
+<body background="bgimage.jpg">
+
+<center>
+<h1>
+<font color="magenta">HOME AUTOMATION SYSTEM</font>
+</h1>
+
+
+<h2 > lat: <font color="red"><span id="lat"> lat will appear here </span> </font> </h2>
+
+<h2 > lon: <font color="red"><span id="lon"> lon will appear here </span> </font> </h2>
+
+
+<h2 > LED status: <font color="red"><span id="stat"> LED status will appear here </span> </font></h2>
+
+
+<button onclick= "turnon()" > Turn On </button>
+<button onclick= "turnoff()" > Turn Off </button>
+
+</center>
+
+<h1 > <br> <br> </h1>
+
+
+<script src="https://www.gstatic.com/firebasejs/5.5.5/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyAN8K4K7GMVV-cSuYO7CUkf8vEGWfNZl5E",
+    authDomain: "mymaps-123.firebaseapp.com",
+    databaseURL: "https://mymaps-123.firebaseio.com",
+    projectId: "mymaps-123",
+    storageBucket: "",
+    messagingSenderId: "891207715246"
+  };
+  firebase.initializeApp(config);
+
+
+var lat = document.getElementById('lat');
+var dbRef1 = firebase.database().ref().child('lat');
+dbRef1.on('value', snap => lat.innerText = snap.val());
+
+var lon= document.getElementById('lon');
+var dbRef2 = firebase.database().ref().child('lon');
+dbRef2.on('value', snap => lon.innerText = snap.val());
+
+
+var stat= document.getElementById('stat');
+var dbRef3 = firebase.database().ref().child('LED');
+dbRef3.on('value', snap => stat.innerText = snap.val());
+
+
+function turnon()
+{
+	dbRef3.set("ON");
+	//alert("LED has been turned on");
+}
+
+function turnoff()
+{
+	dbRef3.set("OFF");
+	//alert("LED has been turned off");
+}
+
+</script>
+</body>
+</html>
