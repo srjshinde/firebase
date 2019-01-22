@@ -1,0 +1,97 @@
+<html>
+<head>
+  <title>Smart Agriculture</title>
+  <!--meta name="viewport" content="width=device-width, initial-scale=1.0"-->
+  <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body >
+
+  <div id="login_div" class="main-div">
+    <center>
+    <font color="green"><h1>Welcome to Smart Agriculture System</h1></font>
+    <h4>please log in to continue</h4>
+    </center>
+    <input type="email" placeholder="Email..." id="email_field" />
+    <input type="password" placeholder="Password..." id="password_field" />
+
+    <button autofocus onclick="login()">Login to Account</button>
+  </div>
+
+  <div id="page_div" class="log_page">
+
+<center><h2>Sensor Status</h2></center>
+
+<table>
+  <tr>
+    <th>Sensor</th>
+    <th >Current Value</th>
+    <th>Action &nbsp &nbsp
+        <button id="auto_sw" onclick="auto_switch()" >Aut</button>
+    </th>
+  </tr>
+  <tr>
+    <td>Temperature</td>
+    <td id="temp_data"></td>
+    <td>Fan: &nbsp &nbsp &nbsp
+        <button id="fan_sw" onclick="fan_switch()" >On</button>
+    </td>
+  </tr>
+  <tr>
+    <td>Humidity</td>
+    <td id="humi_data"></td>
+    <td>&nbsp&nbsp</td>
+  </tr>
+  <tr>
+    <td>Moisture</td>
+    <td id="moist_data"></td>
+    <td>Pump:  &nbsp &nbsp
+        <button id="pump_sw" onclick="pump_switch()" >On</button>
+    </td>
+  </tr>
+  <tr>
+    <td>Light Intensity</td>
+    <td id="light_data"></td>
+    <td>Bulb: &nbsp &nbsp &nbsp
+        <button id="bulb_sw" onclick="bulb_switch()" >On</button>
+    </td>
+  </tr>
+
+</table>
+
+    
+  </div>
+
+
+  <div id="user_div" class="loggedin-div">
+    <button onclick="logout()">Logout</button>
+  </div>
+
+  <div id="trial_div" class="test_div">
+     <font color="blue" ><h2 id="user_para"></h2></font>
+  </div>
+
+  <script src="https://www.gstatic.com/firebasejs/5.8.0/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyANCr5wGNy54QN8OZHNnDqmvGiL9fWb_gU",
+    authDomain: "smartagripro.firebaseapp.com",
+    databaseURL: "https://smartagripro.firebaseio.com",
+    projectId: "smartagripro",
+    storageBucket: "smartagripro.appspot.com",
+    messagingSenderId: "1052557177241"
+  };
+  firebase.initializeApp(config);
+
+  
+</script>
+
+
+  <script src="index.js"></script>
+
+</body>
+</html>
+
+
+
