@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<link rel="stylesheet" href="style.css" />
+
+
+<script src="https://www.gstatic.com/firebasejs/5.9.0/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyCIPhYAIBQCYz8K533o2mrqItnt5NKSxCg",
+    authDomain: "parking234car.firebaseapp.com",
+    databaseURL: "https://parking234car.firebaseio.com",
+    projectId: "parking234car",
+    storageBucket: "parking234car.appspot.com",
+    messagingSenderId: "356247034750"
+  };
+  firebase.initializeApp(config);
+</script>
+
+</head>
+
+<body>
+
+<ul>
+  <li><a class="active" href="#home">Logged-in User: </a></li>
+  <li><a href="#news">News</a></li>
+  <li><a href="#contact">Contact</a></li>
+  <li><a href="#about">About</a></li>
+</ul>
+
+<center>
+
+<table style="display: inline-block;", cellspacing="50">
+  <tr width="220">
+    <td style="background-color: green" height="340", width="180" id= "slot1">free</td>
+    <td height="340", width="180" id= "slot2">loading...</td>
+    <td height="340", width="180" id= "slot3">loading...</td>
+    <td height="340", width="180" id= "slot4">loading...</td>    
+  </tr>
+
+  <tr width="220">
+    <td height="20", width="180">
+      <button class="book-button" onclick="book_slot('slot1')">Book Slot 1</button>
+    </td>
+    <td height="20", width="180">
+      <button class="book-button" onclick="book_slot('slot2')">Book Slot 2</button>
+    </td>
+    <td height="20", width="180">
+      <button class="book-button" onclick="book_slot('slot3')">Book Slot 3</button>
+    </td>
+    <td height="20", width="180">
+      <button class="book-button" onclick="book_slot('slot4')">Book Slot 4</button>
+    </td>
+  </tr>
+  
+</table>
+
+<div class="form-popup" id="myForm">
+
+  <form action="javascript:void(0)" class="form-container">
+    <h1 id="num" >Book Slot</h1>
+
+    <label for="email"><b>Email &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</b></label>
+    <input type="text" placeholder="Enter Email" id="email" required>
+
+    <label for="psw"><b>Vehicle No</b></label>
+    <input type="text" placeholder="Enter Password" id="vnum" required>
+
+
+    <button type="submit" class="btn" onclick="submit_close_form(current_slot)">Login</button>
+    <button type="button" class="btn cancel" onclick="close_form()">Close</button>
+
+  </form>
+</div>
+
+</center>
+
+<script type="text/javascript">
+  current_slot='slot1';
+
+
+  dbref=firebase.database().ref();
+  dbref.on('value', function(snap){
+  datakey=Object.keys(snap.val())
+  //document.getElementById('slot1').innerText=datakey['slot1'];
+  });
+
+  function book_slot(number)
+    {
+      //document.getElementById(number).style.background="red";
+      current_slot=number
+      document.getElementById("num").innerText="Book "+number;
+      document.getElementById("myForm").style.display = "block";
+    }
+
+    function cancel_slot(number)
+    {
+      document.getElementById(number).style.background="lightgreen";
+      document.getElementById(number).innerText="free";
+ //     document.getElementById("myForm").style.display = "none";
+    }
+
+    function close_form() {
+      document.getElementById("myForm").style.display = "none";
+    }
+    function submit_close_form(slot_num) {
+      document.getElementById("myForm").style.display = "none";
+      alert(document.getElementById('email').value);
+      document.getElementById(slot_num).style.background="red";
+      document.getElementById(slot_num).innerText="booked";
+    }
+</script>
+</body>
+</html>
