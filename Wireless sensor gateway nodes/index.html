@@ -1,0 +1,87 @@
+<html>
+<head>
+  <title>Smart Agriculture</title>
+  <!--meta name="viewport" content="width=device-width, initial-scale=1.0"-->
+  <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body >
+
+  <div id="login_div" class="main-div">
+    <center>
+    <font color="green"><h1>Wireless Sensor Node Gateway System</h1></font>
+    <h4>please log in to continue</h4>
+    </center>
+    <input type="email" placeholder="Email..." id="email_field" />
+    <input type="password" placeholder="Password..." id="password_field" />
+
+    <button autofocus onclick="login()">Login to Account</button>
+  </div>
+
+  <div id="page_div" class="log_page">
+
+<center><h2>Sensor Status</h2></center>
+
+<table>
+  <tr>
+    <th>Sensor</th>
+    <th >Current Value</th>
+    
+  </tr>
+  <tr>
+    <td>Node1__Temperature1</td>
+    <td id="temp_data"></td>
+   
+  </tr>
+  <tr>
+    <td>Node1__Temperature2</td>
+    <td id="humi_data"></td>
+    
+  </tr>
+  <tr>
+    <td>Node2__Temperature1</td>
+    <td id="moist_data"></td>
+    
+  </tr>
+  <tr>
+    <td>Node2__Temperature2</td>
+    <td id="light_data"></td>
+    
+  </tr>
+
+</table>
+
+    
+  </div>
+
+
+  <div id="user_div" class="loggedin-div">
+    <button onclick="logout()">Logout</button>
+  </div>
+
+  <div id="trial_div" class="test_div">
+     <font color="blue" ><h2 id="user_para"></h2></font>
+  </div>
+
+  
+<script src="https://www.gstatic.com/firebasejs/5.8.6/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyDDQmiNL-oI_5xfdQbJoifbox9VZ5a3CAA",
+    authDomain: "wsnngateway.firebaseapp.com",
+    databaseURL: "https://wsnngateway.firebaseio.com",
+    projectId: "wsnngateway",
+    storageBucket: "wsnngateway.appspot.com",
+    messagingSenderId: "598716080602"
+  };
+  firebase.initializeApp(config);
+</script>
+
+
+  <script src="index.js"></script>
+
+</body>
+</html>
+
+
